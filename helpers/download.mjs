@@ -3,10 +3,11 @@ import crypto from "crypto"
 
 const start = async (req, res) => {
     const {url, type} = req.body
+    console.log(`query type: ${type}`)
     const resp = await fetch(process.env.STARTPATH, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({url, type})
+        body: JSON.stringify({url: url, type: type})
     })
     const response = await resp.json()
     const id = response.data
@@ -97,33 +98,43 @@ const ytlist = async (req, res) => {
     const args = ["-J", "--flat-playlist", "--no-warnings", "--dump-single-json", url]
 
     try {
-        const info = await getVideoInfo(args, "playlist", null);
-        myJob.state = "completed"
-        jobs.delete(id)
+        const info = await fetch(process.env.METADATAPATH, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({id: id, time: null})
+        });
+        const data = await info.json()
+        if (info.status != 200) {
+            return res.status(info.status).json({
+                success: false,
+                message: data.message
+            })
+        }
+
         res.status(200).json({
             success: true,
-            data: info
+            data: data
         });
     } catch (err) {
-        myJob.state = "failed"
-        jobs.delete(id)
         console.error("Error getting playlist info:", err);
         res.status(500).json({ 
             success: false,
-            message: "playlist " + err
-         });
+            message: "Fetching playlist Error: " + err
+        });
     }
 }
 
 const cancel = async (req, res) => {
-    const body = req.body
+    const {id} = req.body
+    console.log(req.body)
+    console.log(id)
 
-    const job = body.id
     const resp = await fetch(process.env.CANCELPATH, {
         method: "POST",
         header: {"Content-Type": "application/json"},
-        body: JSON.stringify({id: job})
+        body: JSON.stringify({id: id})
     })
+    
     const resj = await resp.json()
     if (job) {
         if (resp.status && resp.status !== 200) {
