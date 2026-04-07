@@ -4,29 +4,46 @@ import uploadToCloud from "../config/cloudinayhelper.mjs"
 import User from "../model/user.mjs"
 
 const returnData = async (req, res) => {
-    try {
-        const page = req.headers["page"]
-        if (!page) {
-            page = 1
-        }
+    const page = req.headers["page"]
+    const limit = 6
 
-        const data = await feedbase.find({ })
+    console.log(`given page: ${page}`)
+
+    if (!page) {
+        page = 1
+    }
+
+    console.log(`page number: ${page} with limit ${limit}`)
+
+    try {
+
+        const data = await Render.find().sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit)
+        
         if (!data) {
-            res.status(404).json({
+            return res.status(404).json({
                 success: false,
                 message: "data not found"
+            })
+        }
+
+        const totalObject = await Render.countDocuments()
+        if (!totalObject) {
+            return res.status(400).json({
+                success: false,
+                message: "unable to complete operation"
             })
         }
 
         res.status(200).json({
             success: true,
             data: data,
+            totalPage: Math.ceil(totalObject / limit),
             message: "success"
         })
     } catch (e) {
         res.status(500).json({
             success: false,
-            message: "error from server",
+            message: "error occured geting content",
             error: e
         })
     }

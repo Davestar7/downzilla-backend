@@ -129,25 +129,33 @@ const cancel = async (req, res) => {
     console.log(req.body)
     console.log(id)
 
-    const resp = await fetch(process.env.CANCELPATH, {
-        method: "POST",
-        header: {"Content-Type": "application/json"},
-        body: JSON.stringify({id: id})
-    })
-    
-    const resj = await resp.json()
-    if (job) {
-        if (resp.status && resp.status !== 200) {
-            return res.status(res.status).json({
-                success: false,
-                message: resj.message
-            })
-        } else if (resp.status && resp.status === 200) {
-            return res.status(res.status).json({
-                success: true,
-                message: resj.message
-            })
+    try {
+        const resp = await fetch(process.env.CANCELPATH, {
+            method: "POST",
+            header: {"Content-Type": "application/json"},
+            body: JSON.stringify({id: id})
+        })
+        
+        const resj = await resp.json()
+        if (job) {
+            if (resp.status && resp.status !== 200) {
+                return res.status(res.status).json({
+                    success: false,
+                    message: resj.message
+                })
+            } else if (resp.status && resp.status === 200) {
+                return res.status(res.status).json({
+                    success: true,
+                    message: resj.message
+                })
+            }
         }
+    } catch (e) {
+        console.log(`the fucking error: ${e} \n the error message: ${e.message} `)
+        res.status(500).json({
+            success: false,
+            message: e.message + " :occured while processing"
+        })
     }
 
 }
