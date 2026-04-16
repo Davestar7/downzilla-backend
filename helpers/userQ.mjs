@@ -106,6 +106,13 @@ const getSingleHistory = async (req, res) => {
         const tuser = await user.findById(id)
         const his = tuser.downloadHistory.id(Hid)
         console.log(his)
+
+        if (!his) {
+            return res.status(404).json({
+                success: false,
+                message: "Activity not found"
+            })
+        }
         
         res.status(200).json({
             success: true,

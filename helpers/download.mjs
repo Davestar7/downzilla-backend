@@ -125,7 +125,7 @@ const ytlist = async (req, res) => {
 }
 
 const cancel = async (req, res) => {
-    const {id} = req.body
+    const id = req.body.id
     console.log(req.body)
     console.log(id)
 

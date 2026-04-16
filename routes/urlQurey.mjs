@@ -1,7 +1,7 @@
 import express from 'express'
 import {findFromDB} from '../middleware/rendermiddleware.mjs'
 import {start, cancel, ytdown, ytlist} from '../helpers/download.mjs'
-import {returnData, uploadData} from "../helpers/downloadfeed.mjs"
+import {returnData, uploadData, getSingleContent} from "../helpers/downloadfeed.mjs"
 import { toHistory, getHistory, getSingleHistory, removeHistory } from '../helpers/userQ.mjs'
 
 let route = express.Router()
@@ -27,5 +27,7 @@ route.post("/gethistory", getHistory)
 route.post("/getSH", getSingleHistory)
 
 route.post("/deletehistory", removeHistory)
+
+route.post("/getContentData", getSingleContent)
 
 export default route

@@ -123,4 +123,42 @@ const uploadData = async (req, res) => {
     }
 }
 
-export {returnData, uploadData}
+const getSingleContent = async (req, res) => {
+    const id = req.body.id
+    console.log(`content id ${id}`)
+    if (!id) {
+        return res.status(404).json({
+            success: false,
+            message: "no content id found"
+        })
+    }
+
+    try {
+        const data = await Render.findById(id)
+        if (!data) {
+            return res.status(404).json({
+                sucess: false,
+                message: "Content not found"
+            })
+        }
+        if (data.isActive === false) {
+            return res.status(400).json({
+                success: false,
+                message: "this Content may have been deleted"
+            })
+        }
+
+        res.status(201).json({
+            success: true,
+            data: data
+        })
+
+    }catch (e) {
+        res.status(500).json({
+            success: false,
+            message: "Error occured"
+        })
+    }
+}
+
+export {returnData, uploadData, getSingleContent}
