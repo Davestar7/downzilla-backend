@@ -34,7 +34,7 @@ await conncttoDB()
 export {app}
 
 const port = process.env.PORT
-
+console.log("running an andriod editor")
 app.listen(port, () => {
     console.log(`server live at http://localhost:${port}`)
 })
