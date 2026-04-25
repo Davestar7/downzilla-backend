@@ -127,13 +127,12 @@ const ytlist = async (req, res) => {
 const cancel = async (req, res) => {
     const id = req.body.id
     console.log(req.body)
-    console.log(id)
+    console.log(`cancel id: ${id}`)
 
     try {
         const resp = await fetch(process.env.CANCELPATH, {
-            method: "POST",
-            header: {"Content-Type": "application/json"},
-            body: JSON.stringify({id: id})
+            method: "GET",
+            headers: {"Content-Type": "application/json", "x-operation-id": `${id}`}
         })
         
         const resj = await resp.json()

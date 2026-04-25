@@ -1,6 +1,7 @@
 import Render from "../model/feeds.mjs"
 import uploadToCloud from "../config/cloudinayhelper.mjs"
 import User from "../model/user.mjs"
+import connectionToDB from "../db/mongoDB.mjs"
 
 const returnData = async (req, res) => {
     const page = req.headers["page"]
@@ -160,4 +161,42 @@ const getSingleContent = async (req, res) => {
     }
 }
 
-export {returnData, uploadData, getSingleContent}
+const searchContent = async (req, res) => {
+    const text = req.body.text
+    console.log(`text: ${text}`)
+
+    if (!text) {
+        return res.status(404).json({
+            success: false,
+            message: "no keyword found"
+        })
+    }
+
+    // const words = text.split(" ")
+    try {
+        const regex = new RegExp(text, 'i')
+        const result = await Render.find({
+            $or: [
+                    { title: {$regex: regex} },
+                    { description: {$regex: regex} },
+                    { source: {$regex: regex} }
+                ]
+            },
+                {title: 1, description: 1, source: 1}
+            ).exec()
+
+        console.log(result)
+        res.status(200).json({
+            success: true,
+            data: result
+        })
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            success: false,
+            message: "error: " + e.message
+        })
+    }
+}
+
+export {returnData, uploadData, getSingleContent, searchContent}
