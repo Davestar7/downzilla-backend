@@ -1,5 +1,4 @@
 import Render from "../model/feeds.mjs"
-import user from "../model/user.mjs"
 import uploadToCloud from "../config/cloudinayhelper.mjs"
 import User from "../model/user.mjs"
 
