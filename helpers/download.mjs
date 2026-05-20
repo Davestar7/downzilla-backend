@@ -1,9 +1,14 @@
-import archiver from "archiver"
-import crypto from "crypto"
 
 const start = async (req, res) => {
     const {url, type} = req.body
-    console.log(`query type: ${type}`)
+    
+    if (!url || !type) {
+        return res.status(404).json({
+            success: false,
+            message: "process not found"
+        })
+    }
+    
     const resp = await fetch(process.env.STARTPATH, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -11,7 +16,7 @@ const start = async (req, res) => {
     })
     const response = await resp.json()
     const id = response.data
-
+    
     res.status(200).json({
         success: true,
         data: id
@@ -21,7 +26,12 @@ const start = async (req, res) => {
 const ytdown = async(req, res) => {
     let {id, ifTime = null} = req.body;
     
-    console.log(`id: ${id}`)
+    if (!id) {
+        return res.status(404).json({
+            success: false,
+            message: "operation id not found"
+        })
+    }
 
     let time = ifTime
 
@@ -76,32 +86,21 @@ const ytdown = async(req, res) => {
 
 const ytlist = async (req, res) => {
     const {id} = req.body;
-    const myJob = jobs.get(id)
-    if (!myJob || myJob.state !== "created") {
+    
+    if (!id) {
         return res.status(404).json({
             success: false,
             message: "process not found"
         })
     }
-    const url = myJob.url
 
-    console.log(`sent url ${url}`)
-    if (!url) {
-        myJob.state = "failed"
-        jobs.delete(id)
-        return res.status(400).json({
-            success: false,
-            message: "url not found",
-        })
-    }
-
-    const args = ["-J", "--flat-playlist", "--no-warnings", "--dump-single-json", url]
+    const args = ["-J", "--flat-playlist", "--no-warnings", "--dump-single-json"]
 
     try {
         const info = await fetch(process.env.METADATAPATH, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({id: id, time: null})
+            body: JSON.stringify({id: id, time: null, arg: args})
         });
         const data = await info.json()
         if (info.status != 200) {
@@ -113,10 +112,9 @@ const ytlist = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            data: data
+            data: data.data
         });
     } catch (err) {
-        console.error("Error getting playlist info:", err);
         res.status(500).json({ 
             success: false,
             message: "Fetching playlist Error: " + err
@@ -126,8 +124,13 @@ const ytlist = async (req, res) => {
 
 const cancel = async (req, res) => {
     const id = req.body.id
-    console.log(req.body)
-    console.log(`cancel id: ${id}`)
+    
+    if (!id) {
+        return res.status(404).json({
+            success: false,
+            message: "process not found"
+        })
+    }
 
     try {
         const resp = await fetch(process.env.CANCELPATH, {
@@ -136,21 +139,18 @@ const cancel = async (req, res) => {
         })
         
         const resj = await resp.json()
-        if (job) {
-            if (resp.status && resp.status !== 200) {
-                return res.status(res.status).json({
-                    success: false,
-                    message: resj.message
-                })
-            } else if (resp.status && resp.status === 200) {
-                return res.status(res.status).json({
-                    success: true,
-                    message: resj.message
-                })
-            }
+        if (resp.status && resp.status !== 200) {
+            return res.status(res.status).json({
+                success: false,
+                message: resj.message
+            })
+        } else if (resp.status && resp.status === 200) {
+            return res.status(res.status).json({
+                success: true,
+                message: resj.message
+            })
         }
     } catch (e) {
-        console.log(`the fucking error: ${e} \n the error message: ${e.message} `)
         res.status(500).json({
             success: false,
             message: e.message + " :occured while processing"

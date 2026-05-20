@@ -2,7 +2,13 @@ import jwt from 'jsonwebtoken'
 
 const auth = async (req, res, next) => {
     const token = req.headers['authorization']
-    const authToken = token && token.split(" ")[1]
+    if (!token && token.split(" ")[1]) {
+        return res.status(404).json({
+            success: false,
+            message: "token not found"
+        })
+    }
+    const authToken = token.split(" ")[1]
     if (!authToken) {
         return res.status(401).json({
             success: false,
@@ -18,7 +24,7 @@ const auth = async (req, res, next) => {
                 err
             })
         }
-        console.log(user)
+        
         req.userInfo = user
         next()
     })

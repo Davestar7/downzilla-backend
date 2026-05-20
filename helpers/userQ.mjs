@@ -6,10 +6,25 @@ import uploadToCloud from "../config/cloudinayhelper.mjs";
 
 const toHistory = async (req, res) => {
     const body = req.body
-    console.log(body.id)
+    
     // const historyId = crypto.randomUUID()
 
     try {
+        const check = await user.findOne({
+            _id: new Object(body.id),
+            $and: [
+                {'downloadHistory.title': body.title},
+                {'downloadHistory.url': body.url}
+            ]
+        })
+        if (check) {
+            
+            return res.status(401).json({
+                success: false,
+                message: "this activity already exists on your history"
+            })
+        }
+
         let img
         if (body.thumbnail) {
             img = await uploadToCloud(body.thumbnail)
@@ -34,14 +49,13 @@ const toHistory = async (req, res) => {
                 }
             }
         })
-        console.log("done uploading " + up.acknowledged + up.upsertedId)
-
+        
         res.status(200).json({
             success: true,
             message: "uploaded"
         })
     } catch (e) {
-        console.log(e)
+        
         res.status(500).json({
             success: false,
             error: e,
@@ -52,7 +66,7 @@ const toHistory = async (req, res) => {
 
 const getHistory = async (req, res) => {
     const { id } = req.body
-    console.log(id)
+    
     if (!id) {
         return res.status(404).json({
             success: false,
@@ -76,7 +90,7 @@ const getHistory = async (req, res) => {
         })
 
     } catch (e) {
-        console.log(`catach error: ${e}`)
+        
         res.status(500).json({
             success: false,
             message: "error occured while getting data"
@@ -88,7 +102,6 @@ const getSingleHistory = async (req, res) => {
     const id = req.body.id
     const Hid = req.body.Hid
 
-    console.log(`id single history ${id}`)
     if (!id) {
         res.status(404).json({
             success: false,
@@ -105,7 +118,6 @@ const getSingleHistory = async (req, res) => {
     try {
         const tuser = await user.findById(id)
         const his = tuser.downloadHistory.id(Hid)
-        console.log(his)
 
         if (!his) {
             return res.status(404).json({
@@ -127,7 +139,7 @@ const getSingleHistory = async (req, res) => {
 }
 
 const removeHistory = async (req, res) => {
-    const { userId, id, publicId } = req.body
+    const { userId, id, title = null, url = null} = req.body
     
     try {
         if (!userId || !id) {
@@ -137,7 +149,7 @@ const removeHistory = async (req, res) => {
             })
         }
 
-        const del = await user.updateOne(
+        await user.updateOne(
             { _id: userId },
             {
                 $pull: {
@@ -148,9 +160,21 @@ const removeHistory = async (req, res) => {
             }
         )
 
-        await feeds.findByIdAndDelete(publicId)
-
-        console.log(del)
+        if (title && url) {
+            
+            const ch = await feeds.find({
+                $or: [
+                        { title: {$regex: title} },
+                        { publiserId: {$regex: userId} },
+                        { url: {$regex: url} }
+                    ]
+                },
+                // {title: 1, description: 1, source: 1}
+            )
+            if (ch) {
+                await feeds.findByIdAndDelete(ch[0]._id)
+            }
+        }
         res.status(200).json({
             success: true,
             message: "deleted succefully"

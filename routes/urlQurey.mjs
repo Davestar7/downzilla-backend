@@ -1,17 +1,14 @@
 import express from 'express'
-import {findFromDB} from '../middleware/rendermiddleware.mjs'
 import {start, cancel, ytdown, ytlist} from '../helpers/download.mjs'
 
 import {returnData, uploadData, getSingleContent, searchContent} from "../helpers/downloadfeed.mjs"
 
 // import {returnData, uploadData} from "../helpers/downloadfeed.mjs"
-import { starContent, removeStar, getStaredContent } from "../helpers/stars.mjs"
+import { starContent, removeStar, getStaredContent, gettotalstars } from "../helpers/stars.mjs"
 
 import { toHistory, getHistory, getSingleHistory, removeHistory } from '../helpers/userQ.mjs'
 
 let route = express.Router()
-
-route.get('/render/:id', findFromDB)
 
 route.post("/start", start)
 
@@ -42,5 +39,7 @@ route.post("/unstar", removeStar)
 route.post('/stared', getStaredContent)
 
 route.post('/searchContent', searchContent)
+
+route.post('/totalstares', gettotalstars)
 
 export default route

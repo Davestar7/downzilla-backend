@@ -1,7 +1,4 @@
-import { timeStamp } from "console";
 import mongoose from "mongoose";
-import { type } from "os";
-import { stringify } from "querystring";
 
 const downloadSchema = new mongoose.Schema({
     url: {

@@ -9,10 +9,10 @@ import { OAuth2Client } from "google-auth-library";
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 
 const Gcallback = async (req, res) => {
-    console.log('gcallback called')
+    
     try {
         const token = req.body.credential;
-        console.log(token)
+        
         if (!token)  {
             return res.status(404).json({
                 success: false,
@@ -29,11 +29,10 @@ const Gcallback = async (req, res) => {
         const name = payload["sub"];
         const email = payload["email"];
         const username = name.split(" ")[0]
-        console.log(username)
 
         if (username) {
             const checkUser = await user.findOne({$or: [{username}, {email}]})
-            console.log(checkUser)
+            
             if (checkUser) {
                 const accessT = signAccessToken(checkUser)
                 const refreshT = signRefreshToken(checkUser)

@@ -5,15 +5,12 @@ import connectionToDB from "../db/mongoDB.mjs"
 
 const returnData = async (req, res) => {
     const page = req.headers["page"]
-    const limit = 6
+    const limit = 6;
 
-    console.log(`given page: ${page}`)
-
+    
     if (!page) {
         page = 1
     }
-
-    console.log(`page number: ${page} with limit ${limit}`)
 
     try {
 
@@ -38,6 +35,7 @@ const returnData = async (req, res) => {
             success: true,
             data: data,
             totalPage: Math.ceil(totalObject / limit),
+            currentPage: page,
             message: "success"
         })
     } catch (e) {
@@ -77,7 +75,6 @@ const uploadData = async (req, res) => {
         } else {
             upres = await uploadToCloud(thumbnail)
         }
-        console.log(upres)
 
         const feed = await Render.create({
             url: body.url,
@@ -93,21 +90,15 @@ const uploadData = async (req, res) => {
             type: body.type
         })
 
-        console.log(`feed: ${feed._id}`)
-
-        const upuser = await User.findByIdAndUpdate( {
+        await User.findByIdAndUpdate( {
                 _id: body.userId,
                 "downloadHistory.url": body.url
             }, {
                  $set: {"downloadHistory.$.isPublic": true, "downloadHistory.$.publicId": feed._id}
             }, {
-                new: true,
                 runValidators: true,
             }
         )
-
-
-        console.log(`user updated: ${upuser.isModified}`)
 
         res.status(201).json({
             success: true,
@@ -125,7 +116,7 @@ const uploadData = async (req, res) => {
 
 const getSingleContent = async (req, res) => {
     const id = req.body.id
-    console.log(`content id ${id}`)
+    
     if (!id) {
         return res.status(404).json({
             success: false,
@@ -163,8 +154,7 @@ const getSingleContent = async (req, res) => {
 
 const searchContent = async (req, res) => {
     const text = req.body.text
-    console.log(`text: ${text}`)
-
+    
     if (!text) {
         return res.status(404).json({
             success: false,
@@ -182,16 +172,16 @@ const searchContent = async (req, res) => {
                     { source: {$regex: regex} }
                 ]
             },
-                {title: 1, description: 1, source: 1}
+                // {title: 1, description: 1, source: 1}
             ).exec()
 
-        console.log(result)
+        
         res.status(200).json({
             success: true,
             data: result
         })
     } catch (e) {
-        console.log(e)
+        
         res.status(500).json({
             success: false,
             message: "error: " + e.message

@@ -3,10 +3,26 @@ import jwt from "jsonwebtoken"
 import bcryptjs from "bcryptjs"
 import {clearTokens, signAccessToken, signRefreshToken } from '../helpers/cookies.mjs'
 import { userInfo } from "os"
+import emailValidator from "../helpers/asist/emailvalibator.mjs"
 
 const usersignIn = async (req, res) => {
     try {
         const {name, email, password} = req.body
+        if (!name || !email || !password) {
+            return res.status(404).json({
+                success: false,
+                message: "incomplete data"
+            })
+        }
+
+        const ifemail = await emailValidator(email)
+        if (!ifemail.ok) {
+            return res.status(400).json({
+                success: false,
+                message: ifemail.details
+            })
+        }
+
         const username = name.split(" ")[0]
 
         const verify = await user.findOne({$or: [{name}, {email}]})
@@ -49,8 +65,8 @@ const usersignIn = async (req, res) => {
         })
 
     } catch(e) {
-        console.log(e)
-        res.status(400).json({
+        
+        res.status(500).json({
             success: false,
             message: "something went wong when signing up, please try again",
             error: e
@@ -74,7 +90,7 @@ const userlogin = async (req, res) => {
         }
 
         const comparePassword = await bcryptjs.compare(password, checkUser.password)
-        console.log(comparePassword)
+        
         if (!comparePassword) {
             return res.status(402).json({
                 success: false,
@@ -93,13 +109,13 @@ const userlogin = async (req, res) => {
             maxAge: 365 * 24 * 60 * 60 * 1000
         })
 
-
+        
         res.status(200).json({
             success: true,
             message: "loged in successfull",
             token: accessT,
         })
-        console.log(req.cookies.DZRT)
+        
     } catch (e) {
         res.status(400).json({
             success: false,
@@ -110,6 +126,7 @@ const userlogin = async (req, res) => {
 
 const refreshT = (req, res) => {
     const token = req.cookies.DZRT;
+    
     if (!token) {
         return res.status(401).json({
             success: false,

@@ -15,8 +15,7 @@ const autoLogin = (req, res) => {
     const decodedTokenV = jwt.verify(token, process.env.JWT_TOKEN)
 
     userInfo = decodedTokenV
-    console.log(userInfo)
-
+    
     res.status(200).json({
         success: true,
         message: "login success",
