@@ -1,9 +1,404 @@
-Downzilla terms and conditions.
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem cum, nesciunt vitae delectus nihil maiores
- cumque harum cupiditate laborum ea repellat molestiae veritatis veniam, ipsam doloribus temporibus voluptatibus et doloremque.
+Terms and Conditions Last, Updated: May 20, 2026.
 
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem cum, nesciunt vitae delectus nihil maiores cumque harum 
-cupiditate laborum ea repellat molestiae veritatis veniam, ipsam doloribus temporibus voluptatibus et doloremque.
+These Terms and Conditions (“Terms”) govern your access to and use of the Downzilla video downloading and sharing platform, including its website, applications, APIs, embedded players, and related services (collectively, the “Service”). By accessing or using the Service, you agree to be bound by these Terms.
 
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem cum, nesciunt vitae delectus nihil maiores cumque harum cupiditate laborum
- ea repellat molestiae veritatis veniam, ipsam doloribus temporibus voluptatibus et doloremque.
+If you do not agree to these Terms, you must not use the Service.
+
+
+<b>1 Definitions</b>.
+
+“Platform” refers to the Downzilla service.
+
+“User” refers to any individual or entity using the Service.
+
+“Content” refers to videos, audio, images, metadata, text, subtitles, URLs, and any other media processed through the Service.
+
+“Shared Link” refers to any generated URL or downloadable page created through the Platform for viewing or sharing content.
+
+“Third-Party Source” refers to external websites or platforms from which content may originate.
+
+
+
+---
+
+<b>2 Eligibility</b>
+
+You must be at least 13 years old, or the minimum legal age in your jurisdiction, to use the Service.
+
+By using the Service, you represent that:.
+
+You have the legal capacity to enter into these Terms.
+
+Your use of the Service complies with all applicable laws and regulations.
+
+You will not use the Service for unlawful, fraudulent, or infringing activities.
+
+
+
+---
+
+<b> 3 Nature of the Service </b>.
+
+The Platform provides tools that may allow users to:.
+
+Retrieve publicly accessible media from supported third-party sources.
+
+Generate downloadable versions of media.
+
+Stream media through generated links.
+
+Share generated URLs with other users.
+
+Store temporary or cached media files.
+
+Generate metadata previews and embedded playback pages.
+
+
+The Platform does not claim ownership of third-party content processed through the Service.
+
+
+---
+
+<b>4 User Responsibilities</b>.
+
+You are solely responsible for:.
+
+The content you access, download, upload, stream, or share.
+
+Ensuring you have the necessary permissions or legal rights to use the content.
+
+Compliance with copyright laws, intellectual property laws, and platform-specific terms from third-party services.
+
+Any activity performed through your account, device, or generated share links.
+
+
+You agree not to use the Service to:.
+
+Infringe copyrights, trademarks, or other intellectual property rights.
+
+Redistribute copyrighted material without authorization.
+
+Circumvent digital rights management (DRM), encryption, or technological protection systems.
+
+Download or share content where prohibited by applicable law.
+
+Distribute malware, malicious scripts, or harmful files.
+
+Abuse server resources, automated scraping systems, or API endpoints.
+
+Attempt unauthorized access to systems, accounts, or infrastructure.
+
+Share illegal, defamatory, abusive, hateful, or explicit content.
+
+
+
+---
+
+<b>5 Copyright Compliance </b>.
+
+The Platform respects intellectual property rights.
+
+Users may only use the Service for:.
+
+Content in the public domain.
+
+Content licensed for reuse or download.
+
+Uses permitted under applicable law.
+
+
+The Platform may remove or restrict access to content or links upon receiving valid legal complaints or copyright notices.
+
+The Platform reserves the right to:.
+
+Disable links.
+
+Remove stored files.
+
+Suspend repeat infringers.
+
+Cooperate with lawful requests from authorities or rights holders.
+
+
+
+---
+
+<b>6 Shared Video Links</b>.
+
+The Platform may generate publicly accessible or semi-public share links.
+
+By generating or sharing links, you acknowledge that:.
+
+Anyone with access to the link may be able to view or access the content.
+
+Shared links may contain previews, metadata, thumbnails, or embedded playback.
+
+Shared links may expire, be revoked, or become unavailable at any time.
+
+The Platform does not guarantee permanent availability of shared content.
+
+
+You must not use shared links to:
+
+Evade licensing restrictions.
+
+Mass distribute copyrighted works.
+
+Host illegal or prohibited media.
+
+
+The Platform reserves the right to remove any shared link without notice.
+
+
+---
+
+<b>7 Third-Party Services</b>.
+
+The Service may interact with third-party websites, platforms, or content providers.
+
+The Platform:.
+
+Is not affiliated with all supported third-party services.
+
+Does not guarantee availability or compatibility with external services.
+
+Is not responsible for third-party content, policies, or service interruptions.
+
+Does not control changes made by external providers.
+
+
+Your use of third-party content may also be governed by the terms and policies of those providers.
+
+
+---
+
+<b> Temporary Storage and Caching</b>.
+
+The Platform may temporarily cache, process, or store media files to improve performance and delivery.
+
+Cached or stored files:.
+
+May be automatically deleted without notice.
+
+May have file size, duration, or retention limitations.
+
+Are stored solely for operational purposes.
+
+
+The Platform does not guarantee long-term storage or archival of content.
+
+
+---
+
+<b>9 Accounts and Security</b>.
+
+If accounts are provided, you are responsible for:.
+
+Maintaining the confidentiality of your credentials.
+
+Restricting access to your account.
+
+Promptly notifying the Platform of unauthorized access.
+
+
+The Platform may suspend or terminate accounts that:.
+
+Violate these Terms.
+
+Present security risks.
+
+Abuse bandwidth or infrastructure.
+
+Engage in unlawful activity.
+
+
+
+---
+
+<b>10 Bandwidth and Fair Usage</b>.
+
+To maintain service stability, the Platform may impose:.
+
+Download rate limitations.
+
+Storage restrictions.
+
+API quotas.
+
+File size limitations.
+
+Geographic restrictions.
+
+Temporary suspensions for excessive usage.
+
+
+Automated abuse, excessive scraping, or attempts to overload infrastructure are prohibited.
+
+
+---
+
+11. Privacy
+
+Use of the Service may involve collection of technical information such as:.
+
+Browser and device information.
+
+Download logs.
+
+Shared link activity.
+
+Performance and diagnostic data.
+
+
+This information may be used for:.
+
+Service delivery.
+
+Abuse prevention.
+
+Security monitoring.
+
+Analytics.
+
+Legal compliance.
+
+
+Users should also review the Platform Privacy Policy.
+
+
+---
+
+<b>12 Availability of Service</b>.
+
+The Platform is provided on an “as is” and “as available” basis.
+
+The Platform does not guarantee:.
+
+Continuous uptime.
+
+Uninterrupted downloads.
+
+Compatibility with all sources.
+
+Error-free operation.
+
+Permanent access to generated links.
+
+
+Features may be modified, suspended, or discontinued at any time without notice.
+
+
+---
+
+<b>13 Disclaimer of Warranties</b>.
+
+To the maximum extent permitted by law, the Platform disclaims all warranties, express or implied, including:.
+
+Merchantability.
+
+Fitness for a particular purpose.
+
+Non-infringement.
+
+Availability.
+
+Accuracy.
+
+Reliability.
+
+
+The Platform does not guarantee that downloaded or streamed files will be free from defects, interruptions, or incompatibilities.
+
+
+---
+
+<b>14 Limitation of Liability</b>.
+
+To the fullest extent permitted by law, the Platform and its operators shall not be liable for:.
+
+Indirect or consequential damages.
+
+Loss of profits or data.
+
+Service interruptions.
+
+Content removal.
+
+Third-party actions.
+
+User-generated content.
+
+Copyright claims arising from user activity.
+
+Misuse of shared links.
+
+
+Your use of the Service is at your own risk.
+
+
+---
+
+<b>15 Indemnification</b>.
+
+You agree to indemnify and hold harmless the Platform, its owners, operators, developers, affiliates, and service providers from any claims, damages, liabilities, costs, or legal expenses arising from:.
+
+Your use of the Service.
+
+Your violation of these Terms.
+
+Your infringement of intellectual property rights.
+
+Content shared, downloaded, or distributed through your activity.
+
+
+
+---
+
+<b>16 Termination</b>.
+
+The Platform reserves the right to suspend or terminate access to the Service at any time, with or without notice, for conduct that:
+
+Violates these Terms.
+
+Creates legal exposure.
+
+Harms infrastructure or other users.
+
+Involves abusive or unlawful behavior.
+
+
+Termination may include deletion of cached files, generated links, and account data.
+
+
+---
+
+<b>17 Modifications to the Terms</b>.
+
+The Platform may update or modify these Terms at any time.
+
+Updated Terms become effective upon publication on the Platform.
+
+Continued use of the Service after changes are posted constitutes acceptance of the revised Terms.
+
+
+---
+
+<b>18 Governing Law</b>.
+
+These Terms shall be governed by and interpreted in accordance with the laws applicable in the jurisdiction where the Platform operator is established, without regard to conflict of law principles.
+
+Users are responsible for complying with local laws applicable to their use of the Service.
+
+
+---
+
+<b>19 Severability</b>.
+
+If any provision of these Terms is found unenforceable or invalid, the remaining provisions shall remain in full force and effect.
+
+
+---
+
+<b>20 Entire Agreement</b>.
+
+These Terms constitute the entire agreement between the user and the Platform regarding use of the Service and supersede prior agreements or understandings.
