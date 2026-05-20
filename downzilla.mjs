@@ -33,7 +33,9 @@ app.use('/auth/', auth)
 app.use("/extra/", extras)
 app.use("/shared/", sharedLink)
 await conncttoDB()
-await feedbackdb()
+settimeout(()=> {
+   await feedbackdb()
+}, 3000}
 
 export {app}
 
