@@ -8,6 +8,7 @@ const connectionToDB = async () => {
         console.log("connected to database successfully!!!")
     } catch (error) {
         console.error("failed to get DataBase check internet connection: ", error.message);
+        process.exit(1)
     }
 }
 
