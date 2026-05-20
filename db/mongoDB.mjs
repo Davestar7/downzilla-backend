@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectionToDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGOOSE_URI, {
+        await mongoose.createConnection(process.env.MONGOOSE_URI, {
             writeConcern: { w: "majority" }
         })
         console.log("connected to database successfully!!!")
