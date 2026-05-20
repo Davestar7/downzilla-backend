@@ -11,7 +11,8 @@ const givefeedback = async(req, res) => {
             })
         }
         
-        const check = feedbackS.findOne({$or [userId: id]})
+        const check = feedbackS.findOne({$or [{userId: id}]})
+        
         if (ckeck) {
             await feedbackS.findByIdAndDelete(check._id)
         }
