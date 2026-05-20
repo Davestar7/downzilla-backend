@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-function connectToFeedback() {
+async function connectToFeedback() {
     try {
         await mongoose.connect(process.env.FEEDBACKDBURL, {
             writeConcern: { w: "majority" }
