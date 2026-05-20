@@ -8,6 +8,8 @@ import conncttoDB from './db/mongoDB.mjs'
 import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
 import extras from "./routes/extraroute.mjs";
+import sharedLink from "./routes/share.mjs"
+import feedbackdb from "./db/feedbackdb.mjs"
 // import passport from 'passport'
 
 dotenv.config()
@@ -29,7 +31,9 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use('/qurery/', checkUrlQ)
 app.use('/auth/', auth)
 app.use("/extra/", extras)
+app.use("/shared/", sharedLink)
 await conncttoDB()
+await feedbackdb()
 
 export {app}
 
