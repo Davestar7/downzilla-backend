@@ -4,7 +4,7 @@ const app = express()
 import cors from 'cors'
 import checkUrlQ from './routes/urlQurey.mjs'
 import auth from './routes/authRouts.mjs'
-import conncttoDB from './db/mongoDB.mjs'
+import conncttoDB from './db/dbconnection.mjs'
 import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
 import extras from "./routes/extraroute.mjs";
