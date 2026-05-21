@@ -2,11 +2,9 @@ import mongoose from "mongoose";
 
 const connectToFeedback = async() => {
     try {
-        const connect = mongoose.createConnection(process.env.FEEDBACKDBURL, {
+        const connect = await mongoose.createConnection(process.env.FEEDBACKDBURL, {
             writeConcern: { w: "majority" }
-        });
-        
-        await connect.asPromise()
+        }).asPromise()
         
         return connect;
     } catch (e) {
