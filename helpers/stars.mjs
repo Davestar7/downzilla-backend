@@ -14,10 +14,6 @@ const starContent = async(req, res) => {
     }
     
     try {
-
-      const session = await mongoose.startSession();
-      try {
-        await session.withTransaction(async () => {
         
             const resp = await Render.updateOne(
                 { _id: id },
@@ -26,7 +22,7 @@ const starContent = async(req, res) => {
             );
             
             if (resp.modifiedCount > 0) {
-            const re =  await User.updateOne(
+               const re =  await User.updateOne(
                   { _id: uploaderId },
                   { $inc: { totalStars: +1 } },
                   { session }
@@ -39,10 +35,6 @@ const starContent = async(req, res) => {
               message: "success"
             })
         
-        })
-      } finally {
-        await session.endSession();
-      }
     } catch (e) {
       res.status(500).json({
         success: false,
@@ -63,11 +55,6 @@ const removeStar = async(req, res) => {
     }
 
     try {
-    
-      const session = await mongoose.startSession();
-      
-      try {
-        await session.withTransaction( async() => {
       
           const resp = await Render.updateOne(
             { _id: id },
@@ -89,15 +76,12 @@ const removeStar = async(req, res) => {
             success: true,
             message: "success"
           })
-        })
-      } finally {
-        await session.endSession();
-      }
+   
     } catch (e) {
       res.status(500).json({
         success: false,
         message: `error: ${e.message}`
-    })
+      })
     }
 }
 
