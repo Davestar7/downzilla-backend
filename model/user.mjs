@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import maindb from "../db/mongoDB.mjs"
+import connectionToDB from "../db/mongoDB.mjs"
 
 const downloadSchema = new mongoose.Schema({
     url: {
@@ -79,6 +79,6 @@ const userSchema = new mongoose.Schema({
 
 }, {timeStamp : true})
 
-const User = maindb.model("User", userSchema)
+const User = connectionToDB.model("User", userSchema)
 
 export default User
