@@ -5,6 +5,7 @@ const connectToFeedback = async() => {
         const connect = await mongoose.createConnection(process.env.FEEDBACKDBURL, {
             writeConcern: { w: "majority" }
         });
+        await connect.asPromise()
         
         return connect;
     } catch (e) {
