@@ -5,6 +5,7 @@ const connectionToDownzilla = async () => {
        const connect = await mongoose.createConnection(process.env.MONGOOSE_URI, {
             writeConcern: { w: "majority" }
         })
+        await connect.asPromise()
         return connect;
     } catch (error) {
         console.error("failed to get DataBase check internet connection: ", error.message);
