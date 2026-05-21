@@ -6,11 +6,9 @@ const connectToFeedback = async() => {
             writeConcern: { w: "majority" }
         });
         
-        console.log("feed back database connected")
         return connect;
     } catch (e) {
         console.log(e.message)
-        process.exit(1)
     }
 }
 
