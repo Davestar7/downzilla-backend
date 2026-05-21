@@ -8,7 +8,12 @@ const toHistory = async (req, res) => {
     const body = req.body
     
     // const historyId = crypto.randomUUID()
-
+    if (!body) {
+      return res.status(404).json({
+         success: false,
+         message: "data not found"
+      })
+    }
     try {
         const check = await user.findOne({
             _id: new Object(body.id),
