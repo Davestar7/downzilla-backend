@@ -79,4 +79,6 @@ const userSchema = new mongoose.Schema({
 
 }, {timeStamp : true})
 
-export default const User = maindb.model("User", userSchema)
+const User = maindb.model("User", userSchema)
+
+export default User
