@@ -19,7 +19,7 @@ const connectionToDB = async () => {
 
         console.log("connected to database successfully✌️✌️✌️")
      } catch (e) {
-        console.log("😔connection to database failed " e.message)
+        console.log("😔connection to database failed " + e.message)
         process.exit(1)
      }
 
