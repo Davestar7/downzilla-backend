@@ -41,6 +41,7 @@ export {app}
 
 const port = process.env.PORT
 console.log("running an andriod editor")
-app.listen(port, () => {
+app.listen(port, (req, res) => {
     console.log(`server live at http://localhost:${port}`)
+    res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
 })
