@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Feedback from "./feedbackdb.mjs"
 
 const connectionToDownzilla = async () => {
     try {
@@ -12,17 +11,6 @@ const connectionToDownzilla = async () => {
     }
 }
 
-const connectionToDB = async () => {
-     try {
-        await connectionToDownzilla.asPromise()
-        await Feedback.asPromise()
-
-        console.log("connected to database successfully✌️✌️✌️")
-     } catch (e) {
-        console.log("😔connection to database failed " + e.message)
-        process.exit(1)
-     }
-
 }
 
-export default connectionToDB
+export default connectionToDownzilla
