@@ -44,4 +44,6 @@ const renderSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
-export default const Render = maindb.model("Render", renderSchema)
+const Render = maindb.model("Render", renderSchema)
+
+export default Render
