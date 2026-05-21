@@ -18,14 +18,12 @@ const starContent = async(req, res) => {
             const resp = await Render.updateOne(
                 { _id: id },
                 { $addToSet: { stars: userId } },
-                { session }
             );
             
             if (resp.modifiedCount > 0) {
                const re =  await User.updateOne(
                   { _id: uploaderId },
                   { $inc: { totalStars: +1 } },
-                  { session }
               );
               
             }
@@ -58,8 +56,7 @@ const removeStar = async(req, res) => {
       
           const resp = await Render.updateOne(
             { _id: id },
-            { $pull: { stars: userId } },
-            { session }
+            { $pull: { stars: userId } }
           );
       
           // Only decrement if actually removed
@@ -67,8 +64,7 @@ const removeStar = async(req, res) => {
             await User.updateOne(
               { _id: uploaderId,
                 totalStars: { $gt: 0 } },
-              { $inc: { totalStars: -1 } },
-              { session }
+              { $inc: { totalStars: -1 } }
             );
           }
     
