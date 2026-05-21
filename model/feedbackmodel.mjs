@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import feeddb from "../db/feedbackdb.mjs"
+import connectToFeedback from "../db/feedbackdb.mjs"
 
 const feedback = await mongoose.Schema({
     userId: {
@@ -20,6 +20,6 @@ const feedback = await mongoose.Schema({
     }
 }, {timestamps: true})
 
-const Feedback = feeddb.model("Feedback", feedback)
+const Feedback = connectToFeedback.model("Feedback", feedback)
 
 export default Feedback
