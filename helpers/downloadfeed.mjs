@@ -23,7 +23,7 @@ const returnData = async (req, res) => {
             })
         }
 
-        const totalObject = await Render.countDocuments()
+        const totalObject = await data.countDocuments()
         if (!totalObject) {
             return res.status(400).json({
                 success: false,
