@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import maindb = from "../db/mongoDB.mjs"
+import maindb from "../db/mongoDB.mjs"
 
 const renderSchema = new mongoose.Schema({
     url: {
