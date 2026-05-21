@@ -79,4 +79,4 @@ const userSchema = new mongoose.Schema({
 
 }, {timeStamp : true})
 
-export default maindb.model("User", userSchema)
+export default const User = maindb.model("User", userSchema)
