@@ -1,17 +1,29 @@
 import mongoose from "mongoose";
+import Feedback from "./feedbackmodel.mjs"
 
-const connectionToDB = async () => {
+const connectionToDownzilla = async () => {
     try {
        const connect = await mongoose.createConnection(process.env.MONGOOSE_URI, {
             writeConcern: { w: "majority" }
         })
-        console.log("connected to database successfully!!!")
-        console.log(connect)
         return connect;
     } catch (error) {
         console.error("failed to get DataBase check internet connection: ", error.message);
         process.exit(1)
     }
+}
+
+const connectionToDB = async () => {
+     try {
+        await connectionToDownzilla.asPromise()
+        await Feedback.asPromise()
+
+        console.log("connected to database successfully✌️✌️✌️")
+     } catch (e) {
+        console.log("😔connection to database failed " e.message)
+        process.exit(1)
+     }
+
 }
 
 export default connectionToDB
