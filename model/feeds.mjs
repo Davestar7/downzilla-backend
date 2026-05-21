@@ -44,6 +44,7 @@ const renderSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
-const Renders = connectionToDB.model("Render", renderSchema)
+const connection = await connectionToDB()
+const Renders = connection.model("Render", renderSchema)
 
 export default Renders
