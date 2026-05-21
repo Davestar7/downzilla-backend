@@ -6,6 +6,7 @@ const connectionToDB = async () => {
             writeConcern: { w: "majority" }
         })
         console.log("connected to database successfully!!!")
+        console.log(connect)
         return connect;
     } catch (error) {
         console.error("failed to get DataBase check internet connection: ", error.message);
