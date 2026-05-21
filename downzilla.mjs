@@ -33,6 +33,9 @@ app.use('/qurery/', checkUrlQ)
 app.use('/auth/', auth)
 app.use("/extra/", extras)
 app.use("/shared/", sharedLink)
+app.get("/", (req, res) => {
+   res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
+})
 await conncttoDB()
 
 await feedbackdb()
@@ -41,7 +44,6 @@ export {app}
 
 const port = process.env.PORT
 console.log("running an andriod editor")
-app.listen(port, (req, res) => {
+app.listen(port, () => {
     console.log(`server live at http://localhost:${port}`)
-    res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
 })
