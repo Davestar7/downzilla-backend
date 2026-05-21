@@ -3,8 +3,8 @@ import connectionToDownzilla from "./mongoDB.mjs"
 
 const connectionToDB = async () => {
      try {
-        await connectionToDownzilla().asPromise()
-        await Feedback().asPromise()
+        await connectionToDownzilla
+        await Feedback
 
         console.log("connected to database successfully✌️✌️✌️")
      } catch (e) {
