@@ -79,6 +79,7 @@ const userSchema = new mongoose.Schema({
 
 }, {timeStamp : true})
 
-const User = connectionToDB.model("User", userSchema)
+const connection = await connectionToDB()
+const User = connection.model("User", userSchema)
 
 export default User
