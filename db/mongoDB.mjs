@@ -9,7 +9,6 @@ const connectionToDownzilla = async () => {
         return connect;
     } catch (error) {
         console.error("failed to get DataBase check internet connection: ", error.message);
-        process.exit(1)
     }
 }
 
