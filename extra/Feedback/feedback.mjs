@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import feedbackS from "../../model/feedbackmodel.mjs"
 
 const givefeedback = async(req, res) => {
-    const { id, project = downzilla, message, rating = 0 } = req.body
+    const { id, project = "downzilla", message, rating = 0 } = req.body
     try {
         if (!id || !message) {
             return res.status(404).json({
