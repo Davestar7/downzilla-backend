@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import maindb = from "../db/mongoDB.mjs"
 
 const renderSchema = new mongoose.Schema({
     url: {
@@ -43,4 +44,4 @@ const renderSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
-export default mongoose.model("Render", renderSchema)
+export default maindb.model("Render", renderSchema)
