@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Feedback from "./feedbackmodel.mjs"
+import Feedback from "./feedbackdb.mjs"
 
 const connectionToDownzilla = async () => {
     try {
