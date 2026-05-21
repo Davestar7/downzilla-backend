@@ -20,7 +20,7 @@ const feedback = await mongoose.Schema({
     }
 }, {timestamps: true})
 
-const connection = await connectionToDB()
+const connection = await connectToFeedback()
 const Feedback = connection.model("Feedback", feedback)
 
 export default Feedback
