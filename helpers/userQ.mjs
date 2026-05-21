@@ -103,13 +103,13 @@ const getSingleHistory = async (req, res) => {
     const Hid = req.body.Hid
 
     if (!id) {
-        res.status(404).json({
+        return res.status(404).json({
             success: false,
             message: "id not found"
         })
     }
     if (!Hid) {
-        res.status(404).json({
+        return res.status(404).json({
             success: false,
             message: "content id not found"
         })
