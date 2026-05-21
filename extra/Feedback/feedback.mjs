@@ -13,7 +13,7 @@ const givefeedback = async(req, res) => {
         
         const check = await feedbackS.findOne({$or: [{userId: id}]})
         
-        if (ckeck) {
+        if (check) {
             await feedbackS.findByIdAndDelete(check._id)
         }
         
