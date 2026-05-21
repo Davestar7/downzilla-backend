@@ -20,4 +20,4 @@ const feedback = await mongoose.Schema({
     }
 }, {timestamps: true})
 
-export default feeddb.model("Feedback", feedback)
+export default const feedback = feeddb.model("Feedback", feedback)
