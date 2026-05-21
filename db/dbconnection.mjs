@@ -1,5 +1,5 @@
 import Feedback from "./feedbackdb.mjs"
-import connectioToDownzilla from "./mongoDB.mjs"
+import connectionToDownzilla from "./mongoDB.mjs"
 
 const connectionToDB = async () => {
      try {
