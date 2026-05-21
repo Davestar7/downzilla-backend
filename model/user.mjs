@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import maindb from "../db/mongoDB.mjs"
 
 const downloadSchema = new mongoose.Schema({
     url: {
@@ -78,4 +79,4 @@ const userSchema = new mongoose.Schema({
 
 }, {timeStamp : true})
 
-export default mongoose.model("User", userSchema)
+export default maindb.model("User", userSchema)
