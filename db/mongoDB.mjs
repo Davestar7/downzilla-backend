@@ -11,6 +11,4 @@ const connectionToDownzilla = async () => {
     }
 }
 
-}
-
 export default connectionToDownzilla
