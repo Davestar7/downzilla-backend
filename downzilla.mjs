@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
 import extras from "./routes/extraroute.mjs";
 import sharedLink from "./routes/share.mjs"
-import feedbackdb from "./db/feedbackdb.mjs"
+// import feedbackdb from "./db/feedbackdb.mjs"
 // import passport from 'passport'
 
 dotenv.config()
@@ -37,8 +37,6 @@ app.get("/", (req, res) => {
    res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
 })
 await conncttoDB()
-
-await feedbackdb()
 
 export {app}
 
