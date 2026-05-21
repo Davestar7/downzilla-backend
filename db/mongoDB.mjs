@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectionToDownzilla = async () => {
     try {
-       const connect = await mongoose.createConnection(process.env.MONGOOSE_URI, {
+       const connect = mongoose.createConnection(process.env.MONGOOSE_URI, {
             writeConcern: { w: "majority" }
         })
         await connect.asPromise()
