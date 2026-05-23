@@ -16,8 +16,8 @@ const sharedFeed = async(req, res) => {
         const tit = result.title
         const descriptions = result.description
         const image = result.cloudinaryurl
-        const url = `https://downzilla-backend.onrender.com/user/RenderFeed/${id}`;
-        
+        const url = `https://downzilla.netlify.app/user/RenderFeed/${id}`;
+       
         const title = tit?.slice(0, 60);
         const description = descriptions?.slice(0, 170);
     
@@ -78,7 +78,7 @@ const sharedHistory = async(req, res) => {
         const tit = item.title
         const image = item.cloudinaryurl
         const descriptions = item.description
-        const url = `https://downzilla-backend.onrender.com/user/user/shared/${id}/${hisid}`;
+        const url = `https://downzilla.netlify.app/user/user/shared/${id}/${hisid}`;
         
         const title = tit?.slice(0, 60);
         const description = descriptions?.slice(0, 170);
