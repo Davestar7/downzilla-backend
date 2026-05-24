@@ -1,6 +1,7 @@
 import * as pk from "@devmehq/email-validator-js"
 
 async function emailValidator(email) {
+    console.log(`email sent: ${email}`)
     try {
         const out = await pk.verifyEmailDetailed(email)
 
