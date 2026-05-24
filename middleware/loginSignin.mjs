@@ -19,7 +19,7 @@ const usersignIn = async (req, res) => {
         if (!ifemail.ok) {
             return res.status(400).json({
                 success: false,
-                message: ifemail.details
+                message: "email unable to verify"
             })
         }
 
