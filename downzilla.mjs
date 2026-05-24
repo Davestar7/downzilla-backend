@@ -17,8 +17,8 @@ const origin = [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
     "https://downzilla.netlify.app",
-    "www.downzilla.buzz",
-    "downzilla.buzz"
+    "https://www.downzilla.buzz",
+    "https://downzilla.buzz"
 ]
 
 app.use(cors({
