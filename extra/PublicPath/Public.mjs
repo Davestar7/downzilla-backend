@@ -16,7 +16,7 @@ const sharedFeed = async(req, res) => {
         const tit = result.title
         const descriptions = result.description
         const image = result.cloudinaryurl
-        const url = `https://downzilla.netlify.app/user/RenderFeed/${id}`;
+        const url = `https://downzilla.buzz/user/RenderFeed/${id}`;
        
         const title = tit?.slice(0, 60);
         const description = descriptions?.slice(0, 170);
