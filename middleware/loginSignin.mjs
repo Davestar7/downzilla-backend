@@ -19,7 +19,7 @@ const usersignIn = async (req, res) => {
         if (!ifemail.ok) {
             return res.status(400).json({
                 success: false,
-                message: `email error: ${ifemail.details}`
+                message: `email error: ${JSON.stringify(ifemail.details, null, 2)}`
             })
         }
 
