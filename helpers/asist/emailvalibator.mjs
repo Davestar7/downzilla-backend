@@ -1,6 +1,19 @@
 import * as pk from "@devmehq/email-validator-js"
 
 async function emailValidator(email) {
+    try {
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        return {
+            ok: valid,
+            details: valid ? "email is valid" : "invalid email format"
+        }
+    } catch (e) {
+        return {
+            ok: false,
+            details: e.message
+        }
+    }
+/*
     console.log(`email sent: ${email}`)
     try {
         const out = await pk.verifyEmailDetailed(email)
@@ -15,5 +28,6 @@ async function emailValidator(email) {
             details: e.message
         }
     }
+*/
 }
 export default emailValidator
