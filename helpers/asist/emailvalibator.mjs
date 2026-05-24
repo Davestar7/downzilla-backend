@@ -5,7 +5,7 @@ async function emailValidator(email) {
         const out = await pk.verifyEmailDetailed(email)
 
         return {
-            ok: out.wellFormed && out.validDomain && out.validMailbox && !out.disposable,
+            ok: out.wellFormed && out.validDomain && !out.disposable,
             details: out
         }
     } catch (e) {
@@ -15,5 +15,4 @@ async function emailValidator(email) {
         }
     }
 }
-
 export default emailValidator
