@@ -49,31 +49,34 @@ const returnData = async (req, res) => {
 
 const uploadData = async (req, res) => {
     const body = req.body
-    const thumbnail = body.thumbnail || null
-    if (!body) {
-        return res.status(404).json({
+
+    if (!body || !body.url || !body.userId) {
+        return res.status(400).json({
             success: false,
             message: "no upload data found"
         })
     }
 
-    const isAvailable = await Render.findOne({url: body.url})
-    if (isAvailable) {
-        return res.status(300).json({
-            success: false,
-            message: "video already available on Downzilla"
-        })
-    }
+    const thumbnail = body.thumbnail || null
 
-    
     try {
-        let upres = {}
-        if (typeof thumbnail === "object") {
-           const uptumb = thumbnail
-           upres.publicId = uptumb.id
-           upres.url = uptumb.url
-        } else {
-            upres = await uploadToCloud(thumbnail)
+        const isAvailable = await Render.findOne({ url: body.url })
+        if (isAvailable) {
+            return res.status(300).json({
+                success: false,
+                message: "video already available on Downzilla"
+            })
+        }
+
+        let upres = { url: null, publicId: null }
+
+        if (thumbnail) {
+            if (typeof thumbnail === "object") {
+                upres.publicId = thumbnail.id
+                upres.url = thumbnail.url
+            } else {
+                upres = await uploadToCloud(thumbnail)
+            }
         }
 
         const feed = await Render.create({
@@ -90,14 +93,18 @@ const uploadData = async (req, res) => {
             type: body.type
         })
 
-        await User.findByIdAndUpdate( {
+        await User.findOneAndUpdate(
+            {
                 _id: body.userId,
                 "downloadHistory.url": body.url
-            }, {
-                 $set: {"downloadHistory.$.isPublic": true, "downloadHistory.$.publicId": feed._id}
-            }, {
-                runValidators: true,
-            }
+            },
+            {
+                $set: {
+                    "downloadHistory.$.isPublic": true,
+                    "downloadHistory.$.publicId": feed._id
+                }
+            },
+            { runValidators: true }
         )
 
         res.status(201).json({
@@ -106,10 +113,11 @@ const uploadData = async (req, res) => {
         })
 
     } catch (e) {
+        console.error('uploadData error:', e.message)
         res.status(500).json({
             success: false,
             message: "error uploading details",
-            error: e
+            error: e.message
         })
     }
 }
