@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use('/qurery/', checkUrlQ)
 app.use('/auth/', auth)
 app.use("/extra/", extras)
-app.use("/shared/", sharedLink)
+app.use("/shared", sharedLink)
 app.get("/", (req, res) => {
    res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
 })
