@@ -42,7 +42,7 @@ async function uploadToCloud(imgurl) {
         }
 
     } catch (e) {
-        console.error('uploadToCloud failed:', e.message)
+        
         throw new Error(e.message)
     }
 }
