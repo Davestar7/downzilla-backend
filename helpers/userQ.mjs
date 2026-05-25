@@ -144,13 +144,13 @@ const getSingleHistory = async (req, res) => {
 }
 
 const removeHistory = async (req, res) => {
-    const { userId, id, title = null, url = null} = req.body
-    
+    const { userId, id, title = null, url = null } = req.body
+
     try {
         if (!userId || !id) {
-            return res.status(404).json({
+            return res.status(400).json({
                 success: false,
-                message: "id not missing"
+                message: "id is missing"
             })
         }
 
@@ -166,25 +166,26 @@ const removeHistory = async (req, res) => {
         )
 
         if (title && url) {
-            
             const ch = await feeds.find({
                 $or: [
-                        { title: {$regex: title} },
-                        { publiserId: {$regex: userId} },
-                        { url: {$regex: url} }
-                    ]
-                },
-                // {title: 1, description: 1, source: 1}
-            )
-            if (ch) {
+                    { title: { $regex: title, $options: 'i' } },
+                    { publiserId: userId },
+                    { url: { $regex: url, $options: 'i' } }
+                ]
+            })
+
+            if (ch.length > 0) {
                 await feeds.findByIdAndDelete(ch[0]._id)
             }
         }
+
         res.status(200).json({
             success: true,
-            message: "deleted succefully"
+            message: "deleted successfully"
         })
+
     } catch (e) {
+        console.error('removeHistory error:', e.message)
         res.status(500).json({
             success: false,
             message: "failed to delete"
