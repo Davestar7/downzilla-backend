@@ -16,7 +16,7 @@ const toHistory = async (req, res) => {
     }
     try {
         const check = await user.findOne({
-            _id: new Object(body.id),
+            _id: new mongoose.Types.ObjectId(body.id),
             $and: [
                 {'downloadHistory.title': body.title},
                 {'downloadHistory.url': body.url}
@@ -31,7 +31,7 @@ const toHistory = async (req, res) => {
         }
 
         let img
-        if (body.thumbnail) {
+        if (body?.thumbnail) {
             img = await uploadToCloud(body.thumbnail)
         }
        const up =  await user.updateOne({
@@ -44,8 +44,8 @@ const toHistory = async (req, res) => {
                     url: body.url,
                     title: body.title,
                     description: body.description,
-                    cloudinaryUrl: img.url || null,
-                    cloudinaryId: img.publicId || null,
+                    cloudinaryUrl: img?.url || null,
+                    cloudinaryId: img?.publicId || null,
                     type: body.type,
                     source: body.source,
                     stars: 0,
