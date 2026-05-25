@@ -40,7 +40,7 @@ const ytdown = async(req, res) => {
     }
 
     // const arg = ["--dump-single-json", "--flat-playlist","--no-warnings", "--ignore-error", "--no-call-home", "--no-cache-dir", url]
-    const arg = ["-j", "-S", "+size, +br", "--no-warnings", "--skip-download", "--no-check-certificate", "--no-playlist", "--force-ipv4", "--retries", "infinite", "--fragment-retries", "infinite", "--ignore-errors", "--no-cache-dir"]
+    const arg = ["-j", "-S", "+size, +br", "--no-warnings", "--skip-download", "--no-check-certificate", "--no-playlist", "--force-ipv4", "--retries", "infinite", "--fragment-retries", "infinite", "--ignore-errors", "--no-cache-dir", '--extractor-args', 'youtubetab:skip=authcheck',]
 
     try {
         const infos = await fetch(process.env.METADATAPATH, {
@@ -94,7 +94,7 @@ const ytlist = async (req, res) => {
         })
     }
 
-    const args = ["-J", "--flat-playlist", "--no-warnings", "--dump-single-json"]
+    const args = ["-J", "--flat-playlist", "--no-warnings", "--dump-single-json", '--extractor-args', 'youtubetab:skip=authcheck',]
 
     try {
         const info = await fetch(process.env.METADATAPATH, {
