@@ -11,35 +11,38 @@ cloudinary.config({
 })
 
 async function uploadToCloud(imgurl) {
-    const img = imgurl
-    
-    if (img == null) {
+    if (!imgurl) {
         return {
             url: null,
             publicId: null
         }
     }
 
-    const thumres = await axios.get(img, {
-        responseType: "arraybuffer",
-        headers: {
-            "User-Agent": "Mozilla/5.0"
-        }
-    })
-
-    
     try {
-        const upload = await cloudinary.uploader.upload(`data:image/jpeg;base64,${Buffer.from(thumres.data).toString("base64")}`, {
-            folder: "thumbnails",
-            resource_type: "image"
+        const thumres = await axios.get(imgurl, {
+            responseType: "arraybuffer",
+            headers: {
+                "User-Agent": "Mozilla/5.0"
+            }
         })
-        
+
+        const mimeType = thumres.headers['content-type'] || 'image/jpeg'
+
+        const upload = await cloudinary.uploader.upload(
+            `data:${mimeType};base64,${Buffer.from(thumres.data).toString("base64")}`,
+            {
+                folder: "thumbnails",
+                resource_type: "image"
+            }
+        )
+
         return {
-            url : upload.secure_url,
-            publicId : upload.public_id
+            url: upload.secure_url,
+            publicId: upload.public_id
         }
+
     } catch (e) {
-        
+        console.error('uploadToCloud failed:', e.message)
         throw new Error(e.message)
     }
 }
