@@ -185,7 +185,7 @@ const removeHistory = async (req, res) => {
         })
 
     } catch (e) {
-        console.error('removeHistory error:', e.message)
+        
         res.status(500).json({
             success: false,
             message: "failed to delete"
