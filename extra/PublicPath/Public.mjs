@@ -69,7 +69,7 @@ const sharedHistory = async(req, res) => {
           { "downloadHistory.$": 1 }
         ).lean();
         
-        const item = resp?.history?.[0] || null;
+        const item = resp?.downloadHistory?.[0] || null;
         
         if (!item) {
           return res.status(401).send(`<em>404 Content not found</em>`)
