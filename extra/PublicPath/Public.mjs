@@ -58,6 +58,8 @@ const sharedFeed = async(req, res) => {
 const sharedHistory = async(req, res) => {
     const id = req.params.cid 
     const hisid = req.params.hid 
+    console.log("id returned:"+id)
+    console.log("hid:"+hisid)
     
     if (!id || !hisid) {
         return res.status(400).send(`<em>Content not found</em>`)
