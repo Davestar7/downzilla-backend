@@ -65,7 +65,7 @@ const sharedHistory = async(req, res) => {
     
     try {
         const resp = await user.findOne(
-          { _id: id, "history._id": hisid },
+          { _id: id, "downloadHistory._id": hisid },
           { "downloadHistory.$": 1 }
         ).lean();
         
