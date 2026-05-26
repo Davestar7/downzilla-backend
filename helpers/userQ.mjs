@@ -147,10 +147,10 @@ const removeHistory = async (req, res) => {
     const { userId, id, title = null, url = null, cloudId } = req.body
 
     try {
-        if (!userId || !id) {
+        if (!userId || !id || !cloudId) {
             return res.status(400).json({
                 success: false,
-                message: "id is missing"
+                message: "incompete data is missing"
             })
         }
 
@@ -176,7 +176,7 @@ const removeHistory = async (req, res) => {
 
             if (ch.length > 0) {
                 await feeds.findByIdAndDelete(ch[0]._id)
-                await cloudinary.uploader.destroy(cloudId)
+                await uploadToCloud(cloudId)
             }
         }
 
