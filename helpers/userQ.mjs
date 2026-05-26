@@ -176,7 +176,7 @@ const removeHistory = async (req, res) => {
 
             if (ch.length > 0) {
                 await feeds.findByIdAndDelete(ch[0]._id)
-                await uploadToCloud(cloudId)
+                await uploadToCloud(cloudId, true)
             }
         }
 
