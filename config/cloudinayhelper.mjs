@@ -10,7 +10,17 @@ cloudinary.config({
     api_secret : process.env.CLOUDINARY_SECRET_KEY
 })
 
-async function uploadToCloud(imgurl) {
+async function uploadToCloud(imgurl, ifDel = false) {
+
+    if (ifDel) {
+      try{
+         await cloudinary.uploader.destroy(imgurl);
+      } catch (e) {
+        console.log(`failed to delete image: e.message`)
+      }
+      return 
+    }
+
     if (!imgurl) {
         return {
             url: null,
