@@ -144,7 +144,7 @@ const getSingleHistory = async (req, res) => {
 }
 
 const removeHistory = async (req, res) => {
-    const { userId, id, title = null, url = null } = req.body
+    const { userId, id, title = null, url = null, cloudId } = req.body
 
     try {
         if (!userId || !id) {
@@ -176,6 +176,7 @@ const removeHistory = async (req, res) => {
 
             if (ch.length > 0) {
                 await feeds.findByIdAndDelete(ch[0]._id)
+                await cloudinary.uploader.destroy(cloudId)
             }
         }
 
