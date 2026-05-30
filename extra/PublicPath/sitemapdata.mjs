@@ -4,6 +4,9 @@ import { Readable } from 'stream';
 
 const sitemap = async (req, res) => {
    try {
+   res.setHeader('Access-Control-Allow-Origin', '*');
+   res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+   res.setHeader('Cache-Control', 'no-cache');
     const posts = await feed.find({}, '_id updatedAt');
 
     const links = [
