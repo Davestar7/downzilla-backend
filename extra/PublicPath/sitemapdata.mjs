@@ -33,3 +33,15 @@ const sitemap = async (req, res) => {
     res.status(500).end();
   }
 }
+
+const robotstxt = (req, res) => {
+   res.setHeader('Content-Type', 'text/plain');
+   res.send(
+   `User-agent: *
+    Allow: /
+
+    Sitemap: https://downzilla.buzz/sitemap.xml`
+    )
+}
+
+export {sitemap, robotstxt}
