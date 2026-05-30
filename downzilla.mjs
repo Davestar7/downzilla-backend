@@ -35,6 +35,10 @@ app.use('/qurery/', checkUrlQ)
 app.use('/auth/', auth)
 app.use("/extra/", extras)
 app.use("/shared", sharedLink)
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.get("/", (req, res) => {
    res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
 })
