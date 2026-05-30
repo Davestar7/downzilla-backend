@@ -13,7 +13,7 @@ const sitemap = async (req, res) => {
       { url: '/', priority: 1.0 },
       { url: '/user/RenderFeed', priority: 0.8 },
       ...posts.map(post => ({
-        url: `/post/${post._id}`,
+        url: `/user/RenderFeed/${post._id}`,
         lastmod: new Date(post.updatedAt).toISOString(),
         priority: 0.7
       }))
