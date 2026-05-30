@@ -14,4 +14,8 @@ route.get("/connect", isactive)
 
 route.post("/feedback", givefeedback)
 
+route.get("/sitemap", sitemap)
+
+route.get("/robots.txt", robotstxt)
+
 export default route
