@@ -1,7 +1,8 @@
 import TandC from "../extra/tandc.mjs";
 import policy from "../extra/privacy.mjs";
 import isactive from "../extra/isactive.mjs";
-import givefeedback from "../extra/Feedback/feedback.mjs"
+import givefeedback from "../extra/Feedback/feedback.mjs";
+import  {sitemap, robotstxt} from "../extra/PublicPath/sitemapdata.mjs"
 import express from 'express'
 const route = express.Router()
 
