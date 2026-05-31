@@ -39,6 +39,9 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   next();
 });
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
 app.get("/", (req, res) => {
    res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
 })
