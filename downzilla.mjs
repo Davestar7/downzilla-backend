@@ -47,6 +47,19 @@ app.get("/", (req, res) => {
 })
 await conncttoDB()
 
+const keepAlive = () => {
+  setInterval(async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:${process.env.PORT || 3000}/health`
+      );
+      console.log(`Heartbeat ✅ ${new Date().toISOString()}`);
+    } catch (err) {
+      console.error(`Heartbeat failed ❌ ${err.message}`);
+    }
+  }, 14 * 60 * 1000); // 14 minutes
+};
+
 export {app}
 
 const port = process.env.PORT
