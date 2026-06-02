@@ -43,7 +43,7 @@ const robotstxt = (req, res) => {
    `User-agent: *
     Allow: /
 
-    Sitemap: https://downzilla.buzz/sitemap.xml`
+    Sitemap: https://www.downzilla.buzz/sitemap.xml`
     )
 }
 
