@@ -20,7 +20,7 @@ const sitemap = async (req, res) => {
     ];
 
     const stream = new SitemapStream({ 
-      hostname: 'https://downzilla.buzz' 
+      hostname: 'https://www.downzilla.buzz' 
     });
 
     const data = await streamToPromise(
