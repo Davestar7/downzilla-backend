@@ -76,7 +76,7 @@ const sharedHistory = async(req, res) => {
         }
         
         const tit = item.title
-        const image = item.cloudinaryurl
+        const image = item.cloudinaryUrl
         const descriptions = item.description
         const url = `https://downzilla.buzz/user/user/shared/${id}/${hisid}`;
         
