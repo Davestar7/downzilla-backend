@@ -43,7 +43,50 @@ app.get('/health', (req, res) => {
   res.status(200).send('OK');
 });
 app.get("/", (req, res) => {
-   res.send(`hello downzilla here - <a href="https://downzilla.netlify.app">Home</a>`)
+   var title = 'Downzilla - Download Videos Instantly'
+   var description = '/large.png'
+   var thumbnailUrl = 'https://your-thumbnail-url-here.jpg'
+   var siteUrl 'https://downzilla.buzz'
+
+   res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>${title}</title>
+  <meta name="description" content="${description}" />
+  <link rel="canonical" href="${siteUrl}" />
+
+  <!-- Open Graph (Facebook, LinkedIn, Discord, WhatsApp, Telegram) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="${siteUrl}" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="${description}" />
+  <meta property="og:image" content="${thumbnailUrl}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Downzilla" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${title}" />
+  <meta name="twitter:description" content="${description}" />
+  <meta name="twitter:image" content="${thumbnailUrl}" />
+
+  <!-- Redirect for real users (bots will stop at the meta tags above) -->
+  <script>
+    const bots = /bot|crawl|slurp|spider|facebookexternalhit|twitterbot|linkedinbot|discordbot|whatsapp|telegram/i;
+    if (!bots.test(navigator.userAgent)) {
+      window.location.replace('${siteUrl}');
+    }
+  </script>
+</head>
+<body>
+  <a href="${siteUrl}">Go to Downzilla</a>
+</body>
+</html>`);
 })
 await conncttoDB()
 
