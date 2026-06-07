@@ -59,7 +59,7 @@ app.get("/", (req, res) => {
   <link rel="canonical" href="${siteUrl}" />
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PN4DY63BZ"></script>
+<meta name="google-site-verification" content="0tgfcaCnyFS7d3sh4-7Pna5FB-x1wXgkNorAOQVoR1M" />
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
