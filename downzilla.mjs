@@ -57,15 +57,15 @@ app.get("/", (req, res) => {
   <title>${title}</title>
   <meta name="description" content="${description}" />
   <link rel="canonical" href="${siteUrl}" />
-  
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DLDXBKQXPS"></script>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PN4DY63BZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-DLDXBKQXPS');
+  gtag('config', 'G-3PN4DY63BZ');
 </script>
 
   <!-- Open Graph (Facebook, LinkedIn, Discord, WhatsApp, Telegram) -->
