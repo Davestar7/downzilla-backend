@@ -53,8 +53,7 @@ app.get("/", (req, res) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary SEO -->
+  <meta name="google-site-verification" content="0tgfcaCnyFS7d3sh4-7Pna5FB-x1wXgkNorAOQVoR1M" />
   <title>${title}</title>
   <meta name="description" content="${description}" />
   <link rel="canonical" href="${siteUrl}" />
