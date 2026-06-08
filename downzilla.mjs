@@ -9,7 +9,8 @@ import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
 import extras from "./routes/extraroute.mjs";
 import sharedLink from "./routes/share.mjs";
-import feed from "/model/feeds.mjs"
+import feed from "./model/feeds.mjs";
+import { SitemapStream, streamToPromise } from 'sitemap';
 // import feedbackdb from "./db/feedbackdb.mjs"
 // import passport from 'passport'
 
