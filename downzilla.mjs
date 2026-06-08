@@ -97,6 +97,40 @@ app.get("/", (req, res) => {
 </body>
 </html>`);
 })
+
+app.get("/sitemap.xml", async (req, res) => {
+  try {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache');
+
+    const posts = await feed.find({}, '_id updatedAt');
+
+    const links = [
+      { url: '/', priority: 1.0 },
+      ...posts.map(post => ({
+        url: `/shared/feed/${post._id}`,
+        lastmod: new Date(post.updatedAt).toISOString(),
+        priority: 0.7
+      }))
+    ];
+
+    const stream = new SitemapStream({ 
+      hostname: 'https://downzilla-backend.onrender.com'
+    });
+
+    const data = await streamToPromise(
+      Readable.from(links).pipe(stream)
+    );
+
+    res.send(data.toString());
+
+  } catch (err) {
+    console.error('Backend sitemap error:', err);
+    res.status(500).end();
+  }
+});
+
 await conncttoDB()
 
 const keepAlive = () => {
