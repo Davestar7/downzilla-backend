@@ -48,7 +48,7 @@ app.get('/health', (req, res) => {
 app.get("/", (req, res) => {
    var title = 'Downzilla - Download Videos Instantly'
    var description = 'download from over 200+ streaming sites for free online at ease with downzilla and be able to share videos'
-   var thumbnailUrl = '/large.png'
+   var thumbnailUrl = './large.png'
    var siteUrl = 'https://downzilla.buzz';
 
    res.send(`<!DOCTYPE html>
