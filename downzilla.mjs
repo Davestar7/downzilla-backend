@@ -8,7 +8,8 @@ import conncttoDB from './db/dbconnection.mjs'
 import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
 import extras from "./routes/extraroute.mjs";
-import sharedLink from "./routes/share.mjs"
+import sharedLink from "./routes/share.mjs";
+import feed from "/model/feeds.mjs"
 // import feedbackdb from "./db/feedbackdb.mjs"
 // import passport from 'passport'
 
@@ -98,6 +99,8 @@ app.get("/", (req, res) => {
 </html>`);
 })
 
+await conncttoDB()
+
 app.get("/sitemap.xml", async (req, res) => {
   try {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -130,8 +133,6 @@ app.get("/sitemap.xml", async (req, res) => {
     res.status(500).end();
   }
 });
-
-await conncttoDB()
 
 const keepAlive = () => {
   setInterval(async () => {
