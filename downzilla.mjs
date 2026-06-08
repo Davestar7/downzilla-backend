@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
   <title>${title}</title>
   <meta name="description" content="${description}" />
   <link rel="canonical" href="${siteUrl}" />
-
+  <meta name="msvalidate.01" content="2A724501F9F21A1171BA42D3FA9C8EBB" />
   <!-- Google tag (gtag.js) -->
 <meta name="google-site-verification" content="0tgfcaCnyFS7d3sh4-7Pna5FB-x1wXgkNorAOQVoR1M" />
 <script>
