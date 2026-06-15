@@ -28,6 +28,7 @@ const sharedFeed = async(req, res) => {
           <html>
           <head>
             <title>${title} - downzilla</title>
+            <link rel="shortcut icon" href="../large.png" type="image/x-icon">
             <meta property="og:title" content="${title}" />
             <meta property="og:description" content="${description}" />
             <meta property="og:image" content="${image}" />
@@ -45,8 +46,7 @@ const sharedFeed = async(req, res) => {
     
             <meta http-equiv="refresh" content="1;url=${url}" />
           </head>
-    
-          <body>downzilla loading...</body>
+             <body>downzilla loading...</body>
           </html>
         `);
     
@@ -88,6 +88,7 @@ const sharedHistory = async(req, res) => {
             <html>
             <head>
               <title>${title} - downzilla</title>
+              <link rel="shortcut icon" href="../large.png" type="image/x-icon">
               <meta property="og:title" content="${title}" />
               <meta property="og:description" content="${description}" />
               <meta property="og:image" content="${image}" />
