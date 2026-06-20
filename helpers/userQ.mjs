@@ -167,18 +167,16 @@ const removeHistory = async (req, res) => {
 
         if (title && url) {
             const ch = await feeds.find({
-                $or: [
-                    { title: { $regex: title, $options: 'i' } },
-                    { publiserId: userId },
-                    { url: { $regex: url, $options: 'i' } }
-                ]
-            })
+            title: { $regex: title, $options: 'i' },
+            url: { $regex: url, $options: 'i' },
+            publiserId: userId
+       })
 
-            if (ch.length > 0) {
-                await feeds.findByIdAndDelete(ch[0]._id)
-                await uploadToCloud(cloudId, true)
-            }
-        }
+       if (ch.length > 0) {
+          await feeds.findByIdAndDelete(ch[0]._id)
+          await uploadToCloud(cloudId, true)
+       }
+     }
 
         res.status(200).json({
             success: true,
