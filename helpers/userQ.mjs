@@ -147,7 +147,7 @@ const removeHistory = async (req, res) => {
     const { userId, id, title = null, url = null, cloudId } = req.body
 
     try {
-        if (!userId || !id || !cloudId) {
+        if (!userId || !id) {
             return res.status(400).json({
                 success: false,
                 message: "incompete data is missing"
@@ -164,6 +164,7 @@ const removeHistory = async (req, res) => {
                 }
             }
         )
+        if (cloudId) await uploadToCloud(cloudId, true)
 
         if (title && url) {
             const ch = await feeds.find({
@@ -174,7 +175,6 @@ const removeHistory = async (req, res) => {
 
        if (ch.length > 0) {
           await feeds.findByIdAndDelete(ch[0]._id)
-          await uploadToCloud(cloudId, true)
        }
      }
 
