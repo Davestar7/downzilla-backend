@@ -29,7 +29,7 @@ app.use(cors({
     credentials: true
 }))
 app.use(express.json())
-app.use(express.static(...))
+app.use(express.static("."))
 // app.use(express.json({ limit: "6mb" }))
 app.use(cookieParser())
 app.use(bodyParser.json())
