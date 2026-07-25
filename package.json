@@ -10,7 +10,7 @@
     "dev": "nodemon downzilla.mjs"
   },
   "dependencies": {
-    "@apollo/server": "^5.0.0",
+    "@apollo/server": "^5.4.0",
     "@devmehq/email-validator-js": "^2.10.4",
     "@types/node": "^24.0.12",
     "accepts": "^2.0.0",
