@@ -60,10 +60,9 @@ const toHistory = async (req, res) => {
             message: "uploaded"
         })
     } catch (e) {
-        console.log(e.message)
         res.status(500).json({
             success: false,
-            error: e,
+            error: e.message,
             message: `something went wong on the server`
         })
     }
