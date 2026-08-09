@@ -52,8 +52,11 @@ async function uploadToCloud(imgurl, ifDel = false) {
         }
 
     } catch (e) {
-        
-        throw new Error(e.message)
+    
+        return {
+            url: null,
+            publicId: null
+        }
     }
 }
 
