@@ -69,7 +69,6 @@ const uploadData = async (req, res) => {
         }
 
         let upres = { url: null, publicId: null }
-        console.log(body)
 
         if (thumbnail) {
             if (typeof thumbnail === "object") {
@@ -79,8 +78,7 @@ const uploadData = async (req, res) => {
                 upres = await uploadToCloud(thumbnail)
             }
         }
-        console.log("don updating thumbnail")
-
+        
         const feed = await Render.create({
             url: body.url,
             publiserId: body.userId,
@@ -115,7 +113,7 @@ const uploadData = async (req, res) => {
         })
 
     } catch (e) {
-        console.error('uploadData error:', e.message)
+        
         res.status(500).json({
             success: false,
             message: "error uploading details",
