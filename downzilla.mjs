@@ -12,6 +12,7 @@ import sharedLink from "./routes/share.mjs";
 import feed from "./model/feeds.mjs";
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
+import  {sitemap, robotstxt} from "./extra/PublicPath/sitemapdata.mjs"
 // import feedbackdb from "./db/feedbackdb.mjs"
 // import passport from 'passport'
 
@@ -139,6 +140,8 @@ app.get("/sitemap.xml", async (req, res) => {
   }
 });
 
+app.get("/robots.txt", robotstxt)
+
 const keepAlive = () => {
   setInterval(async () => {
     try {
@@ -155,7 +158,7 @@ const keepAlive = () => {
 export {app}
 
 const port = process.env.PORT
-console.log("running an andriod editor")
+
 app.listen(port, () => {
     console.log(`server live at http://localhost:${port}`)
 })
