@@ -15,7 +15,7 @@ const sharedFeed = async(req, res) => {
         
         const tit = result.title
         const descriptions = result.description
-        const image = result.cloudinaryurl
+        const image = result.cloudinaryurl || "../../large.png"
         const url = `https://downzilla.buzz/user/RenderFeed/${id}`;
        
         const title = tit?.slice(0, 60);
@@ -76,7 +76,7 @@ const sharedHistory = async(req, res) => {
         }
         
         const tit = item.title
-        const image = item.cloudinaryUrl
+        const image = item.cloudinaryUrl || "../../large.png"
         const descriptions = item.description
         const url = `https://downzilla.buzz/user/user/shared/${id}/${hisid}`;
         
