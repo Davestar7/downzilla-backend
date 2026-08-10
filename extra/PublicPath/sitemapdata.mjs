@@ -39,12 +39,12 @@ const sitemap = async (req, res) => {
 
 const robotstxt = (req, res) => {
    res.setHeader('Content-Type', 'text/plain');
-   res.send(
-   `User-agent: *
-    Allow: /
+   res.send(`
+   User-agent: *
+   Allow: /
 
-    Sitemap: https://www.downzilla.buzz/sitemap.xml`
-    )
+   Sitemap: https://www.downzilla.buzz/sitemap.xml
+  `)
 }
 
 export {sitemap, robotstxt}
